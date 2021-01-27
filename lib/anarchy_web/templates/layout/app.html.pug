@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width")
+    meta(name="csrf-token" content=get_csrf_token())
+    title Hello Example!
+    link(rel="stylesheet" href=static_path(@conn, "/css/app.css"))
+  body
+    nav
+      div.nav-wrapper
+        = render "_user_menu.html", assigns
+        a.brand-logo.center(href=static_path(@conn, "/")) Anarchy
+
+    .container
+      main(role="main")
+        = @inner_content
+    
+    footer.page-footer
+      .container
+        .row
+          .col.l6.s12
+            h5.white-text Footer Content
+            p.grey-text.text-lighten-4 You can use rows and columns here to organize your footer content.
+          .col.l4.offset-l2.s12
+            h5.white-text Links
+            ul
+              li
+                a.grey-text.text-lighten-3(href=static_path(@conn, "/")) Link 1
+              li
+                a.grey-text.text-lighten-3(href=static_path(@conn, "/")) Link 2
+              li
+                a.grey-text.text-lighten-3(href=static_path(@conn, "/")) Link 3
+              li
+                a.grey-text.text-lighten-3(href=static_path(@conn, "/")) Link 4
+      .footer-copyright
+        .container
+          a.grey-text.text-lighten-4.right(href=static_path(@conn, "/")) More Links
+
+script(src="https://code.jquery.com/jquery-3.0.0.min.js")
+script(src=static_path(@conn, "/js/app.js"))
